@@ -61,6 +61,35 @@
     
     <!-- Fonts - Optimized with display=swap (non-blocking load) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://keub.com/#organization",
+                "name": "KEUB",
+                "url": "https://keub.com",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://keub.com/assets/images/keub-logo.png"
+                },
+                "description": "KEUB Smart Storage System: Secure, key-free storage for outdoor adventures. Deploy at beaches, ski resorts, rivers, and parks.",
+                "email": "Info@keubit.com"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://keub.com/#website",
+                "url": "https://keub.com",
+                "name": "KEUB - Adventure starts when your pockets are empty",
+                "description": "KEUB Smart Storage System: Secure, key-free storage for outdoor adventures. One system. Infinite adventures.",
+                "publisher": { "@id": "https://keub.com/#organization" }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- ARIA live region for screen reader announcements -->
@@ -69,9 +98,9 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
+                <a href="#main-content" class="logo" aria-label="Return to top of page">
                     <img src="assets/images/keub-logo.png" alt="KEUB Logo" width="120" height="40" loading="eager" decoding="async">
-                </div>
+                </a>
                 <ul class="nav-links" id="nav-links" role="menubar">
                     <li role="none"><a href="#product" role="menuitem" aria-label="Navigate to The System section">The System</a></li>
                     <li role="none"><a href="#how-it-works" role="menuitem" aria-label="Navigate to How It Works section">How It Works</a></li>
@@ -110,8 +139,15 @@
         <div class="hero-content">
             <div class="container">
                 <h1 class="hero-headline">
-                    <span class="hero-headline-line1">Adventure&nbsp;starts&nbsp;when</span><br>
-                    <span class="hero-headline-line2">your&nbsp;pockets&nbsp;are&nbsp;empty.</span>
+                    <span class="hero-headline-desktop">
+                        <span class="hero-headline-line1">Adventure&nbsp;starts&nbsp;when</span><br>
+                        <span class="hero-headline-line2">your&nbsp;pockets&nbsp;are&nbsp;empty.</span>
+                    </span>
+                    <span class="hero-headline-mobile">
+                        <span class="hero-headline-mobile-line">Adventure starts</span>
+                        <span class="hero-headline-mobile-line">when your</span>
+                        <span class="hero-headline-mobile-line">pockets are empty.</span>
+                    </span>
                 </h1>
                 <p class="hero-subtext">Secure your gear. Free your hands. Focus on the experience. Where secure, key-free storage unlocks worry-free adventures for guests and smarter operations for partners.</p>
                 <a href="#cta" class="btn btn-primary">Deploy KEUB at Your Location</a>

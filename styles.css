@@ -319,8 +319,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
     padding: 0 2rem;
     max-width: 900px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
 }
 
 .hero-content .container {
@@ -338,6 +340,8 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .hero-headline-line1 {
@@ -348,12 +352,26 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap;
 }
 
-@media (max-width: 480px) {
-    .hero-headline-line1 {
-        white-space: normal;
+/* Mobile headline with intentional line breaks */
+.hero-headline-mobile {
+    display: none;
+}
+
+.hero-headline-mobile-line {
+    display: block;
+}
+
+/* Tablet and mobile: show mobile headline, hide desktop */
+@media (max-width: 768px) {
+    .hero-headline-desktop {
+        display: none;
     }
-    .hero-headline-line2 {
-        white-space: normal;
+    .hero-headline-mobile {
+        display: block;
+    }
+    .hero-content {
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
     }
 }
 
@@ -842,6 +860,7 @@ select:focus-visible {
 }
 
 .steps-container {
+    list-style: none;
     display: flex;
     justify-content: space-between;
     gap: 3rem;
@@ -970,9 +989,7 @@ select:focus-visible {
     image-rendering: crisp-edges;
 }
 
-/* WebP support - REMOVED until WebP versions are created
-   When WebP files exist, uncomment these rules:
-   
+/* Use WebP if supported (smaller file size) */
 .webp-supported .experience-image.rafting {
     background-image: url('assets/images/keub-rafting.webp');
 }
@@ -982,7 +999,6 @@ select:focus-visible {
 .webp-supported .experience-image.beach {
     background-image: url('assets/images/keub-beach.webp');
 }
-*/
 
 .experience-image.festival {
     background: linear-gradient(135deg, #8b4c89 0%, #b86bb3 100%);

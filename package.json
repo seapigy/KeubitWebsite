@@ -4,6 +4,9 @@
   "description": "KEUB Smart Storage System - Official Website",
   "author": "KEUB",
   "license": "UNLICENSED",
+  "scripts": {
+    "convert-webp": "node scripts/convert-to-webp.js"
+  },
   "devDependencies": {
     "sharp": "^0.34.5"
   }

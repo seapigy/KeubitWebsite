@@ -12,10 +12,7 @@ function detectWebPSupport() {
     webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
 }
 
-console.log('[Script] JavaScript file loaded');
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('[Script] DOMContentLoaded fired');
     // Detect WebP support
     detectWebPSupport();
     // Mobile Menu Toggle
@@ -245,8 +242,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (msgInput && formData.message) {
                     updateCharCount();
                 }
-            } catch (e) {
-                console.error('Error loading form data:', e);
+            } catch (_e) {
+                localStorage.removeItem('keub_form_draft');
             }
         }
     }
@@ -275,13 +272,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission with validation
-    console.log('[Form Init] Looking for contact form...');
     const contactForm = document.querySelector('.contact-form');
-    console.log('[Form Init] Contact form found:', contactForm);
-    console.log('[Form Init] Contact form element:', contactForm ? 'EXISTS' : 'NOT FOUND');
-    
+
     if (contactForm) {
-        console.log('[Form Init] Setting up form handlers...');
         // Load saved form data on page load
         loadFormData();
         
@@ -347,28 +340,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 .substring(0, 10000); // Limit length
         }
 
-        console.log('[Form Init] Adding submit event listener...');
-        
         // Handle form submission
         function handleFormSubmit(e) {
-            console.log('[Form] ===== SUBMIT EVENT FIRED =====');
-            console.log('[Form] Submit event fired!');
             if (e) {
                 e.preventDefault();
             }
-            
-            console.log('[Form] Submit event triggered, preventDefault called');
-            
+
             // Prevent double submission
             if (isSubmitting) {
-                console.log('[Form] Already submitting, blocking duplicate');
                 return;
             }
 
             // Rate limiting check
             const now = Date.now();
             if (now - lastSubmissionTime < MIN_SUBMISSION_INTERVAL) {
-                console.log('[Form] Rate limit triggered');
                 showFormError('Please wait a moment before submitting again.');
                 return;
             }
@@ -378,12 +363,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (honeypot && honeypot.value.trim() !== '') {
                 // Bot detected - silently fail (don't show error to avoid revealing honeypot)
                 formAnalytics.spamAttempts++;
-                console.warn('[Form] Spam attempt detected and blocked');
                 return;
             }
-            
-            console.log('[Form] Starting validation');
-            
+
             // Clear previous errors
             const errorMessages = contactForm.querySelectorAll('.error-message');
             errorMessages.forEach(el => el.textContent = '');
@@ -394,27 +376,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const nameInput = document.getElementById('name');
             let nameValue = '';
             if (!nameInput) {
-                console.error('[Validation] Name input not found!');
                 isValid = false;
             } else {
-                console.log('[Validation] Name input raw value:', nameInput.value);
-                console.log('[Validation] Name input value type:', typeof nameInput.value);
                 nameValue = sanitizeInput(nameInput.value);
-                console.log('[Validation] Name value after sanitize:', nameValue, 'Length:', nameValue.length);
-                
+
                 if (!nameValue) {
                     const nameError = document.getElementById('name-error');
-                    console.log('[Validation] Name error element:', nameError);
                     if (nameError) {
                         nameError.textContent = 'Name is required';
                         nameError.style.display = 'block';
                         nameError.style.visibility = 'visible';
                         nameError.style.opacity = '1';
-                        console.log('[Validation] Set name error message. TextContent:', nameError.textContent);
-                        console.log('[Validation] Error element display:', window.getComputedStyle(nameError).display);
-                        console.log('[Validation] Error element visibility:', window.getComputedStyle(nameError).visibility);
-                    } else {
-                        console.error('[Validation] Name error element not found!');
                     }
                     isValid = false;
                 } else if (nameValue.length < 2) {
@@ -449,38 +421,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
             }
             
-            // Get and validate message (declare at function scope)
+            // Get message (optional)
             const messageInput = document.getElementById('message');
             let messageValue = '';
             if (messageInput) {
                 messageValue = sanitizeInput(messageInput.value);
             }
-            if (!messageValue) {
-                const messageError = document.getElementById('message-error');
-                if (messageError) {
-                    messageError.textContent = 'Message is required';
-                }
-                isValid = false;
-            } else if (messageValue.length < 10) {
-                const messageError = document.getElementById('message-error');
-                if (messageError) {
-                    messageError.textContent = 'Message must be at least 10 characters';
-                }
-                isValid = false;
-            }
-            
+
             if (!isValid) {
-                console.log('[Form] Validation failed');
-                
-                // Wait a moment to ensure error messages are rendered
                 setTimeout(() => {
-                    console.log('[Form] Error messages after render:', {
-                        name: document.getElementById('name-error')?.textContent,
-                        email: document.getElementById('email-error')?.textContent,
-                        message: document.getElementById('message-error')?.textContent
-                    });
-                    
-                    // Focus first invalid field
                     const errorMessages = contactForm.querySelectorAll('.error-message');
                     let firstErrorElement = null;
                     for (let errorEl of errorMessages) {
@@ -489,19 +438,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             break;
                         }
                     }
-                    
+
                     if (firstErrorElement) {
                         const inputId = firstErrorElement.id.replace('-error', '');
                         const input = document.getElementById(inputId);
                         if (input) {
-                            console.log('[Form] Focusing invalid field:', inputId);
                             input.focus();
-                            // Scroll error into view
                             firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         }
                     } else {
-                        console.warn('[Form] No error messages found but validation failed');
-                        // Fallback: focus name field if no errors found
                         const nameInput = document.getElementById('name');
                         if (nameInput) {
                             nameInput.focus();
@@ -510,9 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 10);
                 return;
             }
-            
-            console.log('[Form] Validation passed, preparing to send');
-            
+
             // Set submitting state and show loading
             isSubmitting = true;
             const submitBtn = document.getElementById('submit-btn');
@@ -542,18 +485,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 phone: phoneValue || "N/A",
                 organization: sanitizeInput(orgInput ? orgInput.value : '') || "N/A",
                 location: sanitizeInput(locInput ? locInput.value : '') || "N/A",
-                message: messageValue
+                message: messageValue || "N/A"
             };
 
-            // Check if EmailJS is loaded
-            console.log('[Form] Checking EmailJS availability');
-            console.log('[EmailJS] typeof emailjs:', typeof emailjs);
-            console.log('[EmailJS] emailjs.send exists:', typeof emailjs?.send);
-            
             if (typeof emailjs === 'undefined' || !emailjs.send) {
                 const errorMsg = 'EmailJS service is not available. This may be due to browser tracking prevention. Please try disabling tracking prevention for this site or use a different browser.';
-                console.error('[EmailJS] Service not loaded - check CDN connection or browser tracking prevention');
-                console.error('[EmailJS] EmailJS object:', typeof emailjs);
                 isSubmitting = false;
                 formAnalytics.errors++;
                 
@@ -579,8 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!emailjs.send || typeof emailjs.send !== 'function') {
                     throw new Error('EmailJS send function not available');
                 }
-            } catch (e) {
-                console.error('[EmailJS] Initialization error:', e);
+            } catch (_e) {
                 const errorMsg = 'EmailJS failed to initialize. Please refresh the page or check your browser settings.';
                 isSubmitting = false;
                 formAnalytics.errors++;
@@ -611,28 +546,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 location: formData.location,
                 message: formData.message
             };
-            
-            // Debug logging (remove in production if desired)
-            console.log('[Form Submission] Sending email with data:', emailParams);
-            
-            console.log('[EmailJS] Calling emailjs.send with:');
-            console.log('[EmailJS] Service ID: service_ddfnrxr');
-            console.log('[EmailJS] Template ID: template_k28zsup');
-            console.log('[EmailJS] Parameters:', emailParams);
-            
+
             emailjs.send(
                 "service_ddfnrxr",
                 "template_k28zsup",
                 emailParams
             )
-            .then(function(response) {
-                console.log('[EmailJS] Success! Response:', response);
-                // Update rate limiting
+            .then(function() {
                 lastSubmissionTime = Date.now();
-                
-                // Track successful submission
                 formAnalytics.submissions++;
-                console.log('[Form Analytics] Submission successful. Total:', formAnalytics.submissions);
                 
                 // Clear saved form data
                 clearFormData();
@@ -662,22 +584,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(function(error) {
-                console.error('[EmailJS] Error caught!');
-                console.error('[EmailJS] Full error object:', error);
-                console.error('[EmailJS] Error status:', error?.status);
-                console.error('[EmailJS] Error text:', error?.text);
-                console.error('[EmailJS] Error message:', error?.message);
-                
-                // Track error
                 formAnalytics.errors++;
-                
-                // Hide loading overlay
+
                 const loadingOverlay = document.getElementById('form-loading-overlay');
                 if (loadingOverlay) {
                     loadingOverlay.classList.remove('active');
                 }
-                
-                // Reset button state
+
                 isSubmitting = false;
                 const submitBtn = document.getElementById('submit-btn');
                 if (submitBtn) {
@@ -687,20 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (btnLoading) btnLoading.style.display = 'none';
                     submitBtn.disabled = false;
                 }
-                
-                // Enhanced error logging (development mode)
-                const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                if (isDevelopment) {
-                    console.error('[EmailJS Error]', {
-                        status: error.status,
-                        text: error.text,
-                        message: error.message,
-                        stack: error.stack
-                    });
-                } else {
-                    console.error('[EmailJS Error]', error.status, error.text);
-                }
-                
+
                 // Determine error type and show appropriate message
                 let errorMessage = 'There was a problem sending your message. Please try again or email us directly at Info@keubit.com';
                 
@@ -718,17 +618,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Attach submit handler to form
         contactForm.addEventListener('submit', handleFormSubmit);
-        console.log('[Form Init] Submit event listener attached');
-        
-        // Also attach click handler to submit button as backup
+
         const submitBtn = document.getElementById('submit-btn');
         if (submitBtn) {
             submitBtn.addEventListener('click', function(e) {
-                console.log('[Form] Submit button clicked directly');
-                // Manually trigger form submit since the form submit event isn't firing
-                console.log('[Form] Manually triggering form submit event');
                 const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
                 contactForm.dispatchEvent(submitEvent);
             });
@@ -939,9 +833,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.as = 'image';
                 link.href = src;
                 document.head.appendChild(link);
-            } catch (e) {
-                console.warn('Unable to preload hero image', e);
-            }
+            } catch (_e) {}
         }
 
         function goToSlide(index) {
@@ -1053,16 +945,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }, { passive: true });
         }
 
+        function supportsWebP() {
+            const canvas = document.createElement('canvas');
+            if (canvas.getContext && canvas.getContext('2d')) {
+                return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+            }
+            return false;
+        }
+
         function buildCarousel(images) {
             slides = [];
             dots = [];
             track.innerHTML = '';
             dotsContainer.innerHTML = '';
+            const useWebP = supportsWebP();
 
             images.forEach((img, index) => {
+                const src = useWebP && img.srcWebp ? img.srcWebp : img.src;
                 const slide = document.createElement('div');
                 slide.className = 'hero-slide';
-                slide.style.backgroundImage = `url('${img.src}')`;
+                slide.style.backgroundImage = `url('${src}')`;
                 if (img.alt) {
                     slide.dataset.alt = img.alt;
                 }
@@ -1084,11 +986,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 dots.push(dot);
             });
 
-            if (images[0] && images[0].src) {
-                // Preload first hero image
+            if (images[0]) {
+                const firstSrc = useWebP && images[0].srcWebp ? images[0].srcWebp : images[0].src;
                 const preloadImg = new Image();
-                preloadImg.src = images[0].src;
-                createPreloadLink(images[0].src);
+                preloadImg.src = firstSrc;
+                createPreloadLink(firstSrc);
             }
 
             attachControls();
@@ -1111,8 +1013,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 buildCarousel(config.images);
             })
-            .catch(err => {
-                console.warn('Hero carousel disabled:', err);
-            });
+            .catch(() => {});
     })();
 });
