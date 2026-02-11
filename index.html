@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://cdn.jsdelivr.net; frame-ancestors 'none';">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>KEUB - Adventure starts when your pockets are empty</title>
+    <meta name="description" content="KEUB Smart Storage System: Secure, key-free storage for outdoor adventures. Deploy at beaches, ski resorts, rivers, and parks. One system. Infinite adventures.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KEUB - Adventure starts when your pockets are empty">
+    <meta property="og:description" content="KEUB Smart Storage System: Secure, key-free storage for outdoor adventures. Deploy at beaches, ski resorts, rivers, and parks.">
+    <meta property="og:image" content="https://keub.com/assets/images/keub-logo.png">
+    <meta property="og:url" content="https://keub.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KEUB - Adventure starts when your pockets are empty">
+    <meta name="twitter:description" content="KEUB Smart Storage System: Secure, key-free storage for outdoor adventures.">
+    <meta name="twitter:image" content="https://keub.com/assets/images/keub-logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://keub.com">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/images/keub-logo.png" as="image" type="image/png">
+    
+    <!-- Critical CSS (above-the-fold) -->
+    <style>
+        :root{--primary-accent:#23DC7D;--dark-charcoal:#0F1A17;--off-white:#F5F7F6;--white:#FFFFFF;--font-headline:'Playfair Display',serif;--font-body:'Inter',sans-serif}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:var(--font-body);color:var(--dark-charcoal);background-color:var(--off-white);line-height:1.6;overflow-x:hidden}
+        .navbar{position:fixed;top:0;left:0;right:0;background:rgba(15,26,23,0.95);backdrop-filter:blur(10px);z-index:1000;padding:1rem 0}
+        .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 24px}
+        .logo img{height:40px;width:auto;max-width:120px;display:block}
+        .hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .hero-background{position:absolute;inset:0;background:linear-gradient(135deg,var(--dark-charcoal) 0%,#1a2d28 100%)}
+        .hero-content{position:relative;z-index:2;text-align:center;color:var(--white);padding:0 2rem;max-width:900px;margin-left:auto;margin-right:auto}
+        .hero-headline{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;margin-bottom:1.5rem;color:var(--white);line-height:1.1;text-align:center}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    </style>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts - Optimized with display=swap (non-blocking load) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ARIA live region for screen reader announcements -->
+    <div id="aria-live-region" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="assets/images/keub-logo.png" alt="KEUB Logo" width="120" height="40" loading="eager" decoding="async">
+                </div>
+                <ul class="nav-links" id="nav-links" role="menubar">
+                    <li role="none"><a href="#product" role="menuitem" aria-label="Navigate to The System section">The System</a></li>
+                    <li role="none"><a href="#how-it-works" role="menuitem" aria-label="Navigate to How It Works section">How It Works</a></li>
+                    <li role="none"><a href="#experiences" role="menuitem" aria-label="Navigate to Experiences section">Experiences</a></li>
+                    <li role="none"><a href="#operators" role="menuitem" aria-label="Navigate to For Operators section">For Operators</a></li>
+                    <li role="none"><a href="#cta" class="cta-link" role="menuitem" aria-label="Request a demo - opens contact form">Request Demo</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                    <span class="sr-only">Menu</span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-carousel" aria-hidden="true">
+                <div class="hero-carousel-track" id="heroCarouselTrack"></div>
+
+                <button class="hero-carousel-btn prev" type="button" aria-label="Previous hero image">
+                    ‹
+                </button>
+                <button class="hero-carousel-btn next" type="button" aria-label="Next hero image">
+                    ›
+                </button>
+
+                <div class="hero-carousel-dots" id="heroCarouselDots" aria-label="Hero image selection"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-headline">
+                    <span class="hero-headline-line1">Adventure&nbsp;starts&nbsp;when</span><br>
+                    <span class="hero-headline-line2">your&nbsp;pockets&nbsp;are&nbsp;empty.</span>
+                </h1>
+                <p class="hero-subtext">Secure your gear. Free your hands. Focus on the experience. Where secure, key-free storage unlocks worry-free adventures for guests and smarter operations for partners.</p>
+                <a href="#cta" class="btn btn-primary">Deploy KEUB at Your Location</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Why KEUB Exists Section -->
+    <section id="why-keub" class="why-keub-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why KEUB Exists</h2>
+                <p class="section-subtitle">Because adventure shouldn't come with risk.</p>
+            </div>
+            <div class="why-keub-content">
+                <p>Guests rafting, skiing, or enjoying the beach lack secure options for phones, keys, and wallets—leading to theft, loss, stress, and liability concerns.</p>
+                <p>KEUB removes friction with a secure self-service platform so guests fully enjoy the experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Product Section -->
+    <section id="product" class="product-section topo-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The KEUB Smart Storage System</h2>
+                <p class="section-subtitle">One system. Infinite adventures. Built to perform in the real world.</p>
+            </div>
+            <p class="section-intro">KEUB is a complete smart storage platform designed specifically for outdoor recreation. From beaches and rivers to ski resorts and town centers, KEUB delivers secure, automated, and scalable storage infrastructure wherever adventure happens.</p>
+            <div class="product-grid" role="list">
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🔒</div>
+                    <h3>Secure</h3>
+                    <p>Military-grade locking technology keeps your belongings safe while you explore.</p>
+                </div>
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">⚡</div>
+                    <h3>Fast Access</h3>
+                    <p>Quick, seamless access via mobile app. No keys, no hassle, just freedom.</p>
+                </div>
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🌧️</div>
+                    <h3>Weatherproof</h3>
+                    <p>Built to withstand the elements. Rain, snow, sun—KEUB stands strong.</p>
+                </div>
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">💳</div>
+                    <h3>Cashless</h3>
+                    <p>Seamless payment integration. No cash, no cards needed at the unit.</p>
+                </div>
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🏔️</div>
+                    <h3>Built for Outdoors</h3>
+                    <p>Designed specifically for outdoor environments and adventure activities.</p>
+                </div>
+                <div class="product-feature" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">🔧</div>
+                    <h3>Complete Platform</h3>
+                    <p>Hardware, software, and payments—all in one integrated system.</p>
+                </div>
+            </div>
+            <div class="product-platform-description">
+                <p>KEUB combines a self-service kiosk for check-in, payment, and access with modular locker towers that scale to each site's demand. A cloud platform manages payments, access, utilization, and maintenance in real time.</p>
+                <p>The system is engineered to withstand sand, water, sun, snow, and heavy foot traffic, making it purpose-built for outdoor environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple. Secure. Seamless.</p>
+            </div>
+            <ol class="steps-container" role="list">
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Step 1">1</div>
+                    <div class="step-content">
+                        <h3>Store your items</h3>
+                        <p>Find a KEUB unit, scan the QR code, and place your belongings inside.</p>
+                    </div>
+                </li>
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Step 2">2</div>
+                    <div class="step-content">
+                        <h3>Lock securely</h3>
+                        <p>Confirm your reservation in the app. Your items are now protected.</p>
+                    </div>
+                </li>
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Step 3">3</div>
+                    <div class="step-content">
+                        <h3>Go adventure</h3>
+                        <p>Your pockets are empty. Your hands are free. The adventure begins.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- What KEUB Unlocks Section -->
+    <section id="experiences" class="experiences-section topo-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What KEUB Unlocks</h2>
+                <p class="section-subtitle">The storage disappears, the adventure begins.</p>
+            </div>
+            <div class="experiences-grid" role="list">
+                <article class="experience-card" role="listitem">
+                    <div class="experience-image rafting" loading="lazy" aria-label="Whitewater rafting adventure scene" role="img"></div>
+                    <div class="experience-content">
+                        <h3>Rafting</h3>
+                        <p>No phones in dry bags. No worries about water damage. Just pure river adventure.</p>
+                    </div>
+                </article>
+                <article class="experience-card" role="listitem">
+                    <div class="experience-image skiing" loading="lazy" aria-label="Skiing on mountain slopes adventure scene" role="img"></div>
+                    <div class="experience-content">
+                        <h3>Skiing</h3>
+                        <p>Leave bulky pockets behind. Feel the freedom of unencumbered runs down the mountain.</p>
+                    </div>
+                </article>
+                <article class="experience-card" role="listitem">
+                    <div class="experience-image beach" loading="lazy" aria-label="Beach day with ocean and sand" role="img"></div>
+                    <div class="experience-content">
+                        <h3>Beach</h3>
+                        <p>No theft anxiety. No unattended valuables. Cities reduce complaints while generating shared revenue.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Platform, Many Environments Section -->
+    <section id="environments" class="environments-section topo-bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">One Platform, Many Environments</h2>
+                <p class="section-subtitle">The same KEUB system, adapted to any outdoor setting.</p>
+            </div>
+            <div class="environments-grid" role="list">
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">⛷️</div>
+                    <h3>Ski Resorts</h3>
+                </div>
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">🚣</div>
+                    <h3>Rivers</h3>
+                </div>
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">🏖️</div>
+                    <h3>Beaches</h3>
+                </div>
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">🌲</div>
+                    <h3>Parks</h3>
+                </div>
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">🏙️</div>
+                    <h3>Town Centers</h3>
+                </div>
+                <div class="environment-item" role="listitem">
+                    <div class="environment-icon" aria-hidden="true">🎢</div>
+                    <h3>Outdoor Attractions</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Operators & Municipalities Section -->
+    <section id="operators" class="operators-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">For Operators & Municipalities</h2>
+                <p class="section-subtitle">Transform your location into an adventure enabler.</p>
+            </div>
+            <div class="operator-model">
+                <h3 class="operator-model-title">How the KEUB Partnership Works</h3>
+                <div class="operator-columns">
+                    <div class="operator-column">
+                        <h4>KEUB Handles</h4>
+                        <ul>
+                            <li>Installation</li>
+                            <li>Hardware</li>
+                            <li>Software</li>
+                            <li>24/7 Customer Support</li>
+                            <li>Maintenance & Monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="operator-column">
+                        <h4>Partners Provide</h4>
+                        <ul>
+                            <li>Space</li>
+                            <li>Foot Traffic</li>
+                            <li>Promotion</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="operator-note">Revenue is shared, creating a new passive income stream without operational burden.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>New Revenue Stream</h3>
+                    <p>Generate income from storage rentals while enhancing guest experience.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Low Maintenance</h3>
+                    <p>Durable hardware designed for minimal upkeep and maximum reliability.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Remote Management by KEUB</h3>
+                    <p>KEUB remotely monitors, operates, and maintains all units from our centralized platform. Partners provide space and foot traffic only.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Durable Hardware</h3>
+                    <p>Built to withstand harsh outdoor conditions year after year.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Scalable Deployments</h3>
+                    <p>Start small and expand. KEUB grows with your needs.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Premium Guest Experience</h3>
+                    <p>Elevate your location's appeal with modern, convenient storage solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="vision-section topo-bg-dark">
+        <div class="container">
+            <div class="vision-content">
+                <h2 class="vision-headline">KEUB is building the first automated locker network for outdoor recreation in the United States.</h2>
+                <p class="vision-support">A national platform designed to support beaches, rafting outfitters, ski resorts, and high-traffic adventure destinations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traction & Launch Section -->
+    <section id="traction" class="traction-section topo-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Building Toward Launch</h2>
+                <p class="section-subtitle">KEUB is active, advancing, and preparing for national deployment.</p>
+            </div>
+            <div class="traction-content">
+                <ul class="traction-list">
+                    <li>Active discussions with municipalities, beach operators, and rafting outfitters</li>
+                    <li>Hardware and software currently in development</li>
+                    <li>Pilot deployments planned to validate revenue and usage models</li>
+                    <li>Platform launch target: April 2026</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Bring KEUB to Your Location</h2>
+                <p class="cta-subtitle">Join the adventure revolution. Deploy KEUB and unlock new possibilities for your guests.</p>
+                <a href="#contact" class="btn btn-primary btn-large">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy" class="modal" role="dialog" aria-labelledby="privacy-title" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close privacy policy">&times;<span class="sr-only">Close</span></button>
+            <h2 id="privacy-title">Privacy Policy</h2>
+            <div class="privacy-content">
+                <p><strong>Last Updated:</strong> January 2026</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Information We Collect</h3>
+                <p>When you submit a demo request through our contact form, we collect:</p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+                    <li>Name</li>
+                    <li>Email address</li>
+                    <li>Organization (optional)</li>
+                    <li>Location type (optional)</li>
+                    <li>Message content</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">How We Use Your Information</h3>
+                <p>We use the information you provide to:</p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+                    <li>Respond to your demo requests and inquiries</li>
+                    <li>Communicate with you about KEUB services</li>
+                    <li>Improve our website and services</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information. Form submissions are transmitted securely via EmailJS and stored in our email system.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Third-Party Services</h3>
+                <p>We use EmailJS to process form submissions. Your data is subject to EmailJS's privacy policy. We do not sell or share your personal information with third parties for marketing purposes.</p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+                    <li>Request access to your personal data</li>
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data</li>
+                    <li>Opt-out of communications</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Contact Us</h3>
+                <p>For privacy-related questions or requests, please contact us at <a href="mailto:Info@keubit.com" style="color: var(--primary-accent);">Info@keubit.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contact" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;<span class="sr-only">Close</span></button>
+            <h2 id="modal-title">Request a Demo</h2>
+            <p id="modal-description" class="sr-only">Fill out the form below to request a demo of the KEUB Smart Storage System. All fields marked with an asterisk are required.</p>
+            <form class="contact-form" novalidate>
+                <div class="form-loading-overlay" id="form-loading-overlay">
+                    <div class="loading-content">
+                        <div class="loading-spinner"></div>
+                        <p class="loading-text">Sending your message...</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name <span class="required" aria-label="required field">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error" autocomplete="name">
+                    <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required" aria-label="required field">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" autocomplete="email">
+                    <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" aria-describedby="phone-help" autocomplete="tel">
+                    <span id="phone-help" class="help-text">Optional</span>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization" aria-describedby="organization-help" autocomplete="organization">
+                    <span id="organization-help" class="help-text">Optional</span>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location Type</label>
+                    <select id="location" name="location" aria-describedby="location-help">
+                        <option value="">Select a location type</option>
+                        <option value="ski-resort">Ski Resort</option>
+                        <option value="beach">Beach</option>
+                        <option value="park">Park</option>
+                        <option value="river">River/Rafting</option>
+                        <option value="festival">Festival/Event</option>
+                        <option value="municipality">Municipality</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span id="location-help" class="help-text">Optional</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" aria-describedby="message-help message-error" maxlength="5000"></textarea>
+                    <span id="message-help" class="help-text">Optional</span>
+                    <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
+                    <span id="message-char-count" class="char-count" aria-live="polite"></span>
+                </div>
+                <!-- Honeypot field for spam protection (hidden from users) -->
+                <div class="form-group honeypot-field" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-btn" aria-label="Submit demo request form">
+                    <span class="btn-text">Submit Request</span>
+                    <span class="btn-loading" style="display: none;">Sending...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="assets/images/keub-logo.png" alt="KEUB Logo" width="120" height="40" loading="lazy" decoding="async">
+                    </div>
+                    <p>One system. Infinite adventures.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#product">The System</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#experiences">Experiences</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Business</h4>
+                        <ul>
+                            <li><a href="#operators">For Operators</a></li>
+                            <li><a href="#cta">Request Demo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column footer-team">
+                        <h4>Leadership</h4>
+                        <ul>
+                            <li>Andrew Petersen – Founder & CEO</li>
+                            <li>Duncan Driscoll – Co-Founder & COO</li>
+                            <li>Christopher Pigusch – Director of Project Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KEUB. All rights reserved. | <a href="#privacy" class="privacy-link">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init("Tguet_sVa8EVsEBbE");
+    </script>
+    <script src="script.js" defer></script>
+</body>
+</html>
