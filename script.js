@@ -892,7 +892,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Pause on hover / focus within hero
+            // Pause on hover within hero
             heroSection.addEventListener('mouseenter', () => {
                 stopAutoRotate();
             });
@@ -901,11 +901,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     startAutoRotate();
                 }
             });
-            heroSection.addEventListener('focusin', () => {
-                stopAutoRotate();
+            // Pause only when focus is on carousel controls (prev/next/dots), not elsewhere in hero
+            function isCarouselControl(el) {
+                if (!el) return false;
+                return el === prevBtn || el === nextBtn || (el.classList && el.classList.contains('hero-dot'));
+            }
+            heroSection.addEventListener('focusin', (e) => {
+                if (isCarouselControl(e.target)) {
+                    stopAutoRotate();
+                }
             });
-            heroSection.addEventListener('focusout', () => {
-                if (!prefersReducedMotion && interactionCount < 3) {
+            heroSection.addEventListener('focusout', (e) => {
+                if (isCarouselControl(e.target) && !isCarouselControl(e.relatedTarget) && !prefersReducedMotion && interactionCount < 3) {
                     startAutoRotate();
                 }
             });
