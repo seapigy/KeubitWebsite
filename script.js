@@ -822,7 +822,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let dots = [];
         let currentIndex = 0;
         let autoRotateTimer = null;
+        let restartTimeout = null;
         const AUTO_ROTATE_DELAY = 6000;
+        const RESTART_AFTER_IDLE = 6000;
         let interactionCount = 0;
 
         function createPreloadLink(src) {
@@ -871,10 +873,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function handleUserInteraction() {
+            if (restartTimeout) {
+                clearTimeout(restartTimeout);
+                restartTimeout = null;
+            }
             interactionCount += 1;
-            // After a few interactions, stop auto-rotate to respect user intent
             if (interactionCount >= 3) {
                 stopAutoRotate();
+                restartTimeout = setTimeout(() => {
+                    interactionCount = 0;
+                    restartTimeout = null;
+                    if (!prefersReducedMotion) {
+                        startAutoRotate();
+                    }
+                }, RESTART_AFTER_IDLE);
             }
         }
 
@@ -891,31 +903,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     nextSlide();
                 });
             }
-
-            // Pause on hover within hero
-            heroSection.addEventListener('mouseenter', () => {
-                stopAutoRotate();
-            });
-            heroSection.addEventListener('mouseleave', () => {
-                if (!prefersReducedMotion && interactionCount < 3) {
-                    startAutoRotate();
-                }
-            });
-            // Pause only when focus is on carousel controls (prev/next/dots), not elsewhere in hero
-            function isCarouselControl(el) {
-                if (!el) return false;
-                return el === prevBtn || el === nextBtn || (el.classList && el.classList.contains('hero-dot'));
-            }
-            heroSection.addEventListener('focusin', (e) => {
-                if (isCarouselControl(e.target)) {
-                    stopAutoRotate();
-                }
-            });
-            heroSection.addEventListener('focusout', (e) => {
-                if (isCarouselControl(e.target) && !isCarouselControl(e.relatedTarget) && !prefersReducedMotion && interactionCount < 3) {
-                    startAutoRotate();
-                }
-            });
 
             // Touch swipe
             let touchStartX = 0;
