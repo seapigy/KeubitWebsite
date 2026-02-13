@@ -5,9 +5,11 @@
   "author": "KEUB",
   "license": "UNLICENSED",
   "scripts": {
-    "convert-webp": "node scripts/convert-to-webp.js"
+    "convert-webp": "node scripts/convert-to-webp.js",
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "to-ico": "^1.1.5"
   }
 }

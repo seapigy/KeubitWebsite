@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#' || href === '#contact') {
-                if (href === '#contact') {
+            if (href === '#' || href === '#contact' || href === '#cta') {
+                if (href === '#contact' || href === '#cta') {
                     e.preventDefault();
                     openModal(modal);
                 }
@@ -84,10 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctaButtons = document.querySelectorAll('a[href="#cta"], .btn-primary');
     const closeModalBtns = document.querySelectorAll('.close-modal');
 
-    // Open modal when clicking CTA buttons
+    // Open modal when clicking CTA buttons (only for #cta or #contact links)
     ctaButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '#cta' || this.classList.contains('btn-primary')) {
+            const href = this.getAttribute('href');
+            if (href === '#cta' || href === '#contact') {
                 e.preventDefault();
                 openModal(modal);
             }
