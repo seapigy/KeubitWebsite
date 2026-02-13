@@ -972,6 +972,7 @@ select:focus-visible {
 
 .experience-image.rafting {
     background-image: url('assets/images/keub-rafting.png');
+    background-position: center 10%;
     /* Optimize image loading */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -979,12 +980,14 @@ select:focus-visible {
 
 .experience-image.skiing {
     background-image: url('assets/images/keub-ski.png');
+    background-position: center 20%;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
 .experience-image.beach {
     background-image: url('assets/images/keub-beach.png');
+    background-position: center 20%;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
