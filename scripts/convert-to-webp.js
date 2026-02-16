@@ -12,6 +12,7 @@ const QUALITY = 85;
 const images = [
     // Hero carousel
     'assets/images/hero/benjamin-davies-mqN-EV9rNlY-unsplash.jpg',
+    'assets/images/hero/tim-marshall-hIHh4E4_OGA-unsplash.png',
     'assets/images/hero/galen-crout-fItRJ7AHak8-unsplash.jpg',
     'assets/images/hero/kalisa-veer-gRx74OSJTG8-unsplash.jpg',
     'assets/images/hero/live-kaiah-uvCAKs9CSVs-unsplash.jpg',
