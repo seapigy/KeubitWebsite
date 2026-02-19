@@ -995,7 +995,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        fetch('assets/images/hero/hero-images.json?v=2')
+        fetch('assets/images/hero/hero-images.json?v=3')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to load hero images configuration');
